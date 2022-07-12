@@ -8,7 +8,7 @@ type Props = {
   taskList: ITask[];
   setTaskList?: React.Dispatch<React.SetStateAction<ITask[]>>;
   task?: ITask | null;
-  handleUpdate?(id: number, title: string, difficulty: number): void;
+  handleUpdate?(id: number, title: string, difficulty: number, description: string,): void;
 };
 
 const TaskForm = ({
@@ -21,12 +21,14 @@ const TaskForm = ({
   const [id, setId] = useState<number>(0);
   const [title, setTitle] = useState<string>("");
   const [difficulty, setDifficulty] = useState<number>(0);
+  const [description, setDescription] = useState<string>("");
 
   useEffect(() => {
     if (task) {
       setId(task.id);
       setTitle(task.title);
       setDifficulty(task.difficulty);
+      setDescription(task.description)
     }
   }, [task]);
 
@@ -34,30 +36,33 @@ const TaskForm = ({
     e.preventDefault();
 
     if (handleUpdate) {
-      handleUpdate(id, title, difficulty);
+      handleUpdate(id, title, difficulty, description);
     } else {
       const id = Math.floor(Math.random() * 1000);
 
-      const newTask: ITask = { id, title, difficulty };
+      const newTask: ITask = { id, title, difficulty, description };
 
       setTaskList!([...taskList, newTask]);
       setTitle("");
       setDifficulty(0);
+      setDescription("");
     }
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.name === "title") {
       setTitle(e.target.value);
-    } else {
+    } if(e.target.name === "difficulty") {
       setDifficulty(parseInt(e.target.value));
+    } if(e.target.name === "description") {
+      setDescription(e.target.value);
     }
   };
 
   return (
     <form onSubmit={addTaskHandler} className={styles.form}>
       <div className={styles.input_container}>
-        <label htmlFor="Title">Título: </label>
+        <label htmlFor="title">Título: </label>
         <input
           type="text"
           name="title"
@@ -74,6 +79,14 @@ const TaskForm = ({
           placeholder="Dificuldade da Tarefa"
           onChange={handleChange}
           value={difficulty}
+        />
+        <label htmlFor="description">Descrição: </label>
+        <input
+          type="textarea"
+          name="description"
+          placeholder="Descrição da tarefa"
+          onChange={handleChange}
+          value={description}
         />
       </div>
       <input type="submit" value={btnText} />

@@ -1,15 +1,50 @@
 .footer {
-    height: 200px;
+    height: 130px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #282c34;
-    color: #fff;
+    background-color: #051f54;
+    color: #d3e0db;
 
 }
 
 
 .footer span {
     font-weight: bold;
-    color: #61dafb;
+    color: #00ff99;
 }
+
+.footer p {
+    font-size: 18px;
+    font-weight: 300;
+    margin-top: 10px;
+  
+}
+.footer h1 {
+    text-align: center;
+    font-size: 30px;
+    color: #d3e0db;
+    
+}
+.footer ul {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #d3e0db;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 4px;
+    width: 80px;
+    margin: 2px;
+}
+
+
+

@@ -34,8 +34,8 @@ const Home = () => {
     setTaskToUpdate(task);
   };
 
-  const updateTask = (id: number, title: string, difficulty: number) => {
-    const updatedTask: ITask = {id, title, difficulty}
+  const updateTask = (id: number, title: string, difficulty: number, description: string,) => {
+    const updatedTask: ITask = {id, title, difficulty, description}
 
     const updatedItems = taskList.map((task) => {
       return task.id === updatedTask.id ? updatedTask : task
@@ -59,7 +59,7 @@ const Home = () => {
       <Header />
       <main className={styles.main}>
         <div>
-          <h2>O que você vai fazer?//</h2>
+          <h2>O que você vai fazer?</h2>
           <TaskForm
             btnText="Criar tarefa"
             taskList={taskList}
