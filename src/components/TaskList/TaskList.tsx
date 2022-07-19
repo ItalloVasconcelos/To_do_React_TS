@@ -21,7 +21,7 @@ const TaskList = ({taskList, handleDelete, handleEdit }: Props) => {
       <div className={styles.details}>
         <h4>{task.title}</h4>
         <p>Estado: {task.state}</p>
-        <p>Dificuldade: {task.difficulty}</p>
+        <p>Dificuldade: <span>{task.difficulty}</span></p>
         <p>Descrição: {task.description}</p>
       
       </div>

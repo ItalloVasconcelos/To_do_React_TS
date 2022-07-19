@@ -2,9 +2,10 @@
     display: flex;
     justify-content: space-between;
     max-width: 400px;
-    margin: 0 auto;
-    border-bottom: 1px solid #CCC;
-    padding: 1em;
+    margin: 3px auto;
+    border: 2px solid #0d3585;
+    border-radius: 10px;
+    padding: .8em;
 }
 
 .details {
@@ -12,10 +13,13 @@
 }
 
 .details h4 {
-    font-size: 1.1em;
-    margin-bottom: 1em;
+    font-size: 1.2em;
+    margin-bottom: .3em;
 }
 
+.details span {
+    text-size-adjust: 30px;
+}
 .actions {
     display: flex;
     flex-direction: column;
@@ -24,15 +28,15 @@
 }
 
 .actions i {
-    margin-bottom: .5em;
-    font-size: 1.2em;
+    margin-bottom: .2em;
+    font-size: 1em;
     cursor: pointer;
-    background-color: #282c34;
-    color: #fff;
+    background-color: #0d3585;
+    color: #00ff99;
     padding: .4em;
     transition: .5s;
 }
 
 .actions i:hover {
-    color: #61dafb;
+    color: #f50f63;
 }

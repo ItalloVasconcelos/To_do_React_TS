@@ -26,6 +26,7 @@ const TaskForm = ({
   const [state, setState] = useState<string>("")
 
   const listSelect = [
+    {id: 0, name: ""},
     {id: 1, name: "Fazer"},
     {id: 2, name: "Fazendo"},
     {id: 3, name: "Feito"},
@@ -86,9 +87,8 @@ const TaskForm = ({
         />
       </div>
       <div className={styles.input_container}>
-        <label htmlFor="select">Momento: </label>
+        <label htmlFor="select">Estado: </label>
         <select name="state" value={state} onChange={handleChange} required>
-        <option disabled selected id="optionSelected">Selecione</option> 
         {listSelect.map((item, index) => (
           <option key={item.id} value={item.name}>
             {item.name}
