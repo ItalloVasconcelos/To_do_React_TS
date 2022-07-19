@@ -1,4 +1,3 @@
-import React from 'react'
 
 import styles  from "./TaskList.module.css"
 
@@ -21,9 +20,12 @@ const TaskList = ({taskList, handleDelete, handleEdit }: Props) => {
     <div key={task.id} className={styles.task}>
       <div className={styles.details}>
         <h4>{task.title}</h4>
+        <p>Estado: {task.state}</p>
         <p>Dificuldade: {task.difficulty}</p>
         <p>Descrição: {task.description}</p>
+      
       </div>
+        
       <div className={styles.actions}>
         <i className='bi bi-pencil' onClick={() => handleEdit(task)}></i>
         <i className='bi bi-trash' onClick={() => {handleDelete(task.id)}  }></i>
@@ -34,6 +36,7 @@ const TaskList = ({taskList, handleDelete, handleEdit }: Props) => {
   ) : (
     <p>Não tem tarefas cadastradas</p>
   )}
+  
   </>
   )
 }

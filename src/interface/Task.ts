@@ -3,4 +3,5 @@ export interface ITask {
     title: string;
     difficulty: number; 
     description: string;
+    state: string;
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import styles from "./Home.module.css";
 import Footer from "../../components/Footer/Footer";
 import Header from "../../components/Header/Header";
@@ -7,9 +7,10 @@ import TaskList from "../../components/TaskList/TaskList";
 
 import { ITask } from "../../interface/Task";
 import Modal from "../../components/Modal/Modal";
+import useLocalStorage from "../../hooks/localStorage/useLocalStorege";
 
 const Home = () => {
-  const [taskList, setTaskList] = useState<ITask[]>([]);
+  const [taskList, setTaskList] = useLocalStorage<ITask[]>("taskLst",[]);
   const [taskToUpdate, setTaskToUpdate] = useState<ITask | null>(null);
 
   const deleteTask = (id: number) => {
@@ -34,9 +35,8 @@ const Home = () => {
     setTaskToUpdate(task);
   };
 
-  const updateTask = (id: number, title: string, difficulty: number, description: string,) => {
-    const updatedTask: ITask = {id, title, difficulty, description}
-
+  const updateTask = (id: number, title: string, difficulty: number, description: string, state: string) => {
+    const updatedTask: ITask = {id, title, difficulty, description, state}
     const updatedItems = taskList.map((task) => {
       return task.id === updatedTask.id ? updatedTask : task
     })
@@ -59,9 +59,9 @@ const Home = () => {
       <Header />
       <main className={styles.main}>
         <div>
-          <h2>O que você vai fazer?</h2>
+          <h2>Qual suas tarefas de hoje?</h2>
           <TaskForm
-            btnText="Criar tarefa"
+            btnText="Adicionar tarefa!"
             taskList={taskList}
             setTaskList={setTaskList}
             
